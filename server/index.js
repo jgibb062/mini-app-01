@@ -1,12 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 8080
 const knex = require('knex')(require('./knexfile.js')['development']);
 
+app.use(express());
+app.use(cors());
 
 app.get ('/', (req, res) => {
   res.status(200).json('Hello from Docker world.')
 })
+
+
 
 app.get('/movies', (req, res) => {
   knex('movies')

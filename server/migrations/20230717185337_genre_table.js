@@ -2,14 +2,12 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
 exports.up = function(knex) {
   return knex.schema
-  .createTable('movie', table => {
+  .createTable('genre', table => {
     table.increments('id');
-    table.string('title');
-    table.string('director');
-    table.integer('release_year');
-    table.string('duration');
+    table.string('name');
   });
 };
 
@@ -18,5 +16,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('movie');
+  return knex.schema.dropTableIfExists('genre')
 };
