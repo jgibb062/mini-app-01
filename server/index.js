@@ -4,6 +4,11 @@ const app = express();
 const port = 8080
 const knex = require('knex')(require('./knexfile.js')['development']);
 
+// Start Server
+app.listen(port, () => {
+  console.log(`App is running on ${port}.`)
+});
+
 app.use(express());
 app.use(cors());
 
@@ -11,11 +16,9 @@ app.get ('/', (req, res) => {
   res.status(200).json('Hello from Docker world.')
 })
 
-
-
 app.get('/movies', (req, res) => {
-  knex('movies')
-  .select('movies.title')
+  knex('movie')
+  .select('movie.title')
   .then(movieTitle => {
     res.json(movieTitle);
   })
@@ -24,19 +27,3 @@ app.get('/movies', (req, res) => {
     res.status(500).send('Server Error')
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-// Start Server
-app.listen(port, () => {
-  console.log(`App is running on ${port}.`)
-});
-
