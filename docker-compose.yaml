@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./client/frontend/
+    depends_on:
+      - 'database'
+      
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+  
+  api:
+    build: ./server
+    depends_on:
+      - 'database'
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  database:
+    image: postgres:latest
+    container_name: db-container
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
