@@ -22,7 +22,7 @@ const MovieList = () => {
     <Container>
       <Row>
         {movies.map(movie => 
-        <Col key={movie.title}> {movie.title} </Col> )}
+        <Col key={movie.id}> {movie.title} </Col> )}
       </Row>
     </Container>
 
