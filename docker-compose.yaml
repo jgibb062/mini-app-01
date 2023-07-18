@@ -3,6 +3,8 @@ version: "3.8"
 services:
   frontend:
     build: ./client/frontend/
+    volumes:
+      - ./client/frontend:/app
     depends_on:
       - 'database'
       
@@ -13,6 +15,8 @@ services:
   
   api:
     build: ./server
+    volumes:
+      - ./server:/app
     depends_on:
       - 'database'
     ports:

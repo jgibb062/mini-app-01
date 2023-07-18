@@ -8,7 +8,7 @@ import mySQLHelpers, { selectFromTable } from './mySQLHelpers.js';
 
 
 app.use(express());
-app.use(cors());
+
 
 app.get ('/', (req, res) => {
   res.status(200).json('Hello.')

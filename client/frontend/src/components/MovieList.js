@@ -10,7 +10,7 @@ const MovieList = () => {
   }, []);
 
   const fetchMovies = async () => {
-    const res = await fetch ('http://localhost:8080/movies');
+    const res = await fetch ('http://api:8080/movies');
     const data = await res.json();
     setMovies(data);
   };
